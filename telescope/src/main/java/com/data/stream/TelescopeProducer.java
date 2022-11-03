@@ -50,6 +50,6 @@ public class TelescopeProducer {
                 }
                 logger.info("Message sent: " + key + ": " + value);
             }
-        }, 0, 3000);
+        }, 0, 1500);
     }
 }

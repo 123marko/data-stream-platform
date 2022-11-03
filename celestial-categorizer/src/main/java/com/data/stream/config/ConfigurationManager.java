@@ -21,17 +21,17 @@ public final class ConfigurationManager {
         }
     }
 
-    public static PropertiesConfiguration getProducerConfiguration() {
+    public static PropertiesConfiguration getStreamsConfiguration() {
         try {
-            return new Configurations().properties(ConfigurationManager.class.getResource("/producer.properties"));
+            return getConfiguration("/streams.properties");
         } catch (ConfigurationException e) {
             // loading of the configuration file failed
-            throw new ConfigurationLoadingException("Loading of producer properties failed", e);
+            throw new ConfigurationLoadingException("Loading of streams properties failed", e);
         }
     }
 
-    public static Properties getProducerConfigurationProperties() {
-        PropertiesConfiguration propertiesConfiguration = getProducerConfiguration();
+    public static Properties getStreamConfigurationProperties() {
+        PropertiesConfiguration propertiesConfiguration = getStreamsConfiguration();
         CompositeConfiguration compositeConfiguration = new CompositeConfiguration();
         compositeConfiguration.addConfiguration(propertiesConfiguration);
         return ConfigurationConverter.getProperties(compositeConfiguration);
